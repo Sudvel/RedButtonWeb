@@ -1,0 +1,30 @@
+<header class="p-3">
+    <!-- Кнопка меню в левом верхнем углу -->
+    <button class="btn btn-outline-dark d-flex align-items-center gap-2" 
+            type="button" 
+            data-bs-toggle="offcanvas" 
+            data-bs-target="#actionMenu" 
+            aria-controls="actionMenu">
+        <!-- Простая SVG-иконка бургера -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        <span>Меню</span>
+    </button>
+</header>
+
+<!-- Выдвижная боковая панель (Offcanvas) для будущих действий -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="actionMenu" aria-labelledby="actionMenuLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="actionMenuLabel">Панель управления</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+    </div>
+    <div class="offcanvas-body">
+        <p class="text-muted">Здесь будут действия и параметры:</p>
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">Управление профилями</a>
+            <a href="#" class="list-group-item list-group-item-action">Журнал событий</a>
+            <a href="#" class="list-group-item list-group-item-action">Системные настройки</a>
+        </div>
+    </div>
+</div>

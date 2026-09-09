@@ -1,9 +1,50 @@
-<!DOCTYPE html>
-  <html>  
-    <head>  
-      <title>RedButton</title>
-    </head>
-    <body>
-      <h1>Главная</h1>
-    </body>
-  </html>
+{% extends 'base.html' %}
+
+{% block title %}Главная | Control Interface{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4 text-center">
+
+            <!-- Блок выбора/поиска профиля -->
+            <div class="position-relative mb-4 text-start">
+                <label for="profileInput" class="form-label text-muted small fw-semibold">
+                    Активный профиль:
+                </label>
+                <div class="input-group shadow-sm">
+                    <input type="text" 
+                           id="profileInput" 
+                           class="form-control" 
+                           placeholder="Нажмите для выбора или введите имя..." 
+                           autocomplete="off">
+                    <button class="btn btn-outline-secondary" type="button" id="clearProfileBtn">&times;</button>
+                </div>
+
+                <!-- Выпадающий список с профилями -->
+                <ul id="profileDropdown" class="list-group position-absolute w-100 shadow mt-1 d-none" style="z-index: 1050; max-height: 200px; overflow-y: auto;">
+                    {% for profile in profiles %}
+                        <li class="list-group-item list-group-item-action profile-item" role="button" data-id="{{ profile.id }}">
+                            {{ profile.name }}
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item text-muted">Профили не найдены</li>
+                    {% endfor %}
+                    <li id="noResultsItem" class="list-group-item text-muted d-none">Ничего не найдено</li>
+                </ul>
+            </div>
+
+            <!-- Главная переключаемая кнопка -->
+            <div>
+                <button type="button" 
+                        id="mainActionButton" 
+                        class="btn btn-danger btn-lg px-5 py-3 fw-bold shadow rounded-pill w-100"
+                        data-active="false">
+                    ДЕЙСТВИЕ
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
