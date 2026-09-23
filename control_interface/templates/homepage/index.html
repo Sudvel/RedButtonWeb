@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Главная | Control Interface{% endblock %}
 
@@ -6,6 +7,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 text-center">
+
+            <!-- Токен CSRF для отправки POST-запросов из JavaScript -->
+            {% csrf_token %}
+
+            <!-- Скрытое поле: сюда JS запишет ID выбранного профиля -->
+            <input type="hidden" id="selectedProfileId" value="">
 
             <!-- Блок выбора/поиска профиля -->
             <div class="position-relative mb-4 text-start">
@@ -40,9 +47,13 @@
                         id="mainActionButton" 
                         class="btn btn-danger btn-lg px-5 py-3 fw-bold shadow rounded-pill w-100"
                         data-active="false">
-                    ДЕЙСТВИЕ
+                    <span id="btnSpinner" class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+                    <span id="btnText">ДЕЙСТВИЕ</span>
                 </button>
             </div>
+
+            <!-- Блок для вывода статуса выполнения -->
+            <div id="statusAlert" class="alert mt-3 d-none text-start" role="alert"></div>
 
         </div>
     </div>

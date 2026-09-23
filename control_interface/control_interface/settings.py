@@ -69,7 +69,7 @@ TEMPLATES = [
 
 STATIC_URL = 'static/'
 
-# Указываем общую папку статики в корне:
+# Общая папка статики в корне:
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
